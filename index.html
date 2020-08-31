@@ -75,14 +75,14 @@
  <!--Mode buttons show current mode Action buttons are contextual; they provide
     easy access to most important functionality in current mode 
   -->
-  <a id= "" class=""><span class=""></span>&nbsp;Feed</a>
-  <a id= "" class=""><span class=""></span>&nbsp;Followed Users</a>
+  <a id= "sideMenuFeed" class="sideNaveItem"><span class="fas fa-cookie"></span>&nbsp;Feed</a>
+  <a id= "sideMenuFollowed" class="sideNaveItem"><span class="fas fa-walking"></span>&nbsp;Followed Users</a>
 
-   <a id= "" class=""><span class=""></span>&nbsp;All Rounds</a>
-  <a id= "" class=""><span class=""></span>&nbsp;Log New Round</a>
+   <a id= "sideMenuAllRounds" class="sideNaveItem"><span class="fas fa-golf-ball"></span>&nbsp;All Rounds</a>
+  <a id= "sideMenuNewRound" class="sideNaveItem"><span class="fas fa-file"></span>&nbsp;Log New Round</a>
  
-  <a id= "" class="" ><span class=""></span>&nbsp;All Courses</a>
-  <a id= "" class=""><span class=""></span>&nbsp;Add a Course</a>
+  <a id= "sideMenuAllCourses" class="sideNaveItem" ><span class="fas fa-atom"></span>&nbsp;All Courses</a>
+  <a id= "sideMenuAddCourse" class="sideNaveItem"><span class="fas fa-plus-square"></span>&nbsp;Add a Course</a>
    <!-- END GROUP OF MODE/ACTION BUTTONS -->
 </div>
 <!-- END MAIN MENU CONTENT -->
@@ -106,7 +106,7 @@ small">Courses</span></a>
   <!-- BEGIN APP PAGE DEFINITIONS -->
  
    <!-- Activity feed page for viewing feed -->
-   <div id="activityFeedDiv"  class="paddedPage">
+   <div id="feedModeDiv"  class="paddedPage">
     <h1 align="center">Activity Feed</h1>
     <center>
     <h2>This page is under construction.</h2>
@@ -130,7 +130,7 @@ small">Courses</span></a>
     </div>
 
   <!-- Rounds page displaying the user's round history -->
-  <div id="roundsDiv" class="paddedPage" hidden>
+  <div id="roundsModeDiv" class="paddedPage" hidden>
       <h1 align="center">Rounds Page</h1>
     <center>
     <h2>This page is under construction.</h2>
@@ -154,7 +154,7 @@ small">Courses</span></a>
   </div>
 
    <!-- Page  for displaying and searching for courses -->
-   <div id="coursesDiv"  class="paddedPage" hidden>
+   <div id="coursesModeDiv"  class="paddedPage" hidden>
       <h1 align="center">Courses Page</h1>
       <center>
         <h2>This page is under construction.</h2>
@@ -181,12 +181,26 @@ small">Courses</span></a>
   <!-- Begin SCRIPT section of document. -->
   <script>
     var mode = "feedMode";
-
+    var modeToTitle = {"feedMode": "Activity Feed", "roundsMode": "My Rounds", "coursesMode": "Courses"};
+    var modeToSideContent = {"feedMode": ["sideMenuFeed","sideMenuFollowed"], "roundsMode": ["sideMenuAllRounds", "sideMenuNewRound"], "coursesMode":["sideMenuAllCourses", "sideMenuAddCourse"] }
     var bottomBarBtnClick = function() 
     {
+      var prevMode = mode;
       document.getElementById(mode).classList.remove("menuItemSelected");
       this.classList.add("menuItemSelected");
       mode = this.id;
+
+      document.getElementById("topBarTitle").textContent = modeToTitle[mode];
+      // swaps out the content of page
+      document.getElementById(prevMode + "Div").style.display = "none";
+      var prevSideList = modeToSideContent[prevMode];
+      prevSideList.forEach(element => {
+        document.getElementById(element).style.display = "none";
+      });
+      document.getElementById(mode+"Div").style.display = "block";
+      modeToSideContent[mode].forEach(element => {
+        document.getElementById(element).style.display = "block";
+      });
     }
 
 
