@@ -224,8 +224,7 @@ document.addEventListener("click",function(e) {
 });
 
 // Selects/diselects the corresponding bottom item selected
-document.getElementById("courseMode").addEventListener("click",e)
-{
+document.getElementById("coursesMode").addEventListener("click",function(e){
 
   if (!this.classList.contains("menuItemSelected"))
   {
@@ -238,38 +237,36 @@ document.getElementById("courseMode").addEventListener("click",e)
   }else{
     document.getElementById("feedMode").classList.remove("menuItemSelected");
   }
-}
+});
 
-document.getElementById("roundsMode").addEventListener("click",e)
-{
+document.getElementById("roundsMode").addEventListener("click",function(e){
 
   if (!this.classList.contains("menuItemSelected"))
   {
     this.classList.add("menuItemSelected");
   }
 
-  if(document.getElementById("courseMode").classList.contains("menuItemSelected"))
+  if(document.getElementById("coursesMode").classList.contains("menuItemSelected"))
   {
-    document.getElementById("courseMode").classList.remove("menuItemSelected");
+    document.getElementById("coursesMode").classList.remove("menuItemSelected");
   }else{
     document.getElementById("feedMode").classList.remove("menuItemSelected");
   }
-}
+});
 
-document.getElementById("feedMode").addEventListener("click",e)
-{
+document.getElementById("feedMode").addEventListener("click",function(e){
 
   if (!this.classList.contains("menuItemSelected"))
   {
     this.classList.add("menuItemSelected");
   }
 
-  if(document.getElementById("courseMode").classList.contains("menuItemSelected"))
+  if(document.getElementById("coursesMode").classList.contains("menuItemSelected"))
   {
-    document.getElementById("courseMode").classList.remove("menuItemSelected");
+    document.getElementById("coursesMode").classList.remove("menuItemSelected");
   }else{
     document.getElementById("roundsMode").classList.remove("menuItemSelected");
   }
-}
+});
   </script>
 </html>
