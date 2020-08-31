@@ -199,6 +199,77 @@ small">Courses</span></a>
       document.getElementById("menuBtnIcon").classList.add("fa-bars");
       document.getElementById("sideMenu").style.width = "0px"; //close up menu
     }
+
+    e.stopPropagation();
   }); 
+
+//document click: If the user clicks anywhere in the document while the side
+//menu is open, we need to close the menu, toggle the menu state, and
+//re-enable all buttons/input fields on the page.
+document.addEventListener("click",function(e) {
+
+  if (document.getElementById("menuBtnIcon").classList.contains("fa-times")) {
+
+
+    //Menu is open --change back to hamburger
+
+    document.getElementById("menuBtnIcon").classList.remove("fa-times");
+
+    document.getElementById("menuBtnIcon").classList.add("fa-bars");
+
+    document.getElementById("sideMenu").style.width = "0"; //retract menu
+
+}
+
+});
+
+// Selects/diselects the corresponding bottom item selected
+document.getElementById("courseMode").addEventListener("click",e)
+{
+
+  if (!this.classList.contains("menuItemSelected"))
+  {
+    this.classList.add("menuItemSelected");
+  }
+
+  if(document.getElementById("roundsMode").classList.contains("menuItemSelected"))
+  {
+    document.getElementById("roundsMode").classList.remove("menuItemSelected");
+  }else{
+    document.getElementById("feedMode").classList.remove("menuItemSelected");
+  }
+}
+
+document.getElementById("roundsMode").addEventListener("click",e)
+{
+
+  if (!this.classList.contains("menuItemSelected"))
+  {
+    this.classList.add("menuItemSelected");
+  }
+
+  if(document.getElementById("courseMode").classList.contains("menuItemSelected"))
+  {
+    document.getElementById("courseMode").classList.remove("menuItemSelected");
+  }else{
+    document.getElementById("feedMode").classList.remove("menuItemSelected");
+  }
+}
+
+document.getElementById("feedMode").addEventListener("click",e)
+{
+
+  if (!this.classList.contains("menuItemSelected"))
+  {
+    this.classList.add("menuItemSelected");
+  }
+
+  if(document.getElementById("courseMode").classList.contains("menuItemSelected"))
+  {
+    document.getElementById("courseMode").classList.remove("menuItemSelected");
+  }else{
+    document.getElementById("roundsMode").classList.remove("menuItemSelected");
+  }
+}
   </script>
 </html>
