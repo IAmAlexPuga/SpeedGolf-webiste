@@ -70,7 +70,7 @@
       Hundhausen&nbsp;&nbsp;</span>
    </div>
    <!--BEGIN MENU CONTENT-->
- <div id="mainMenuContent">
+ <div id="mainMenuContent" >
  <!--BEGIN GROUP OF MODE/ACTION BUTTONS -->
  <!--Mode buttons show current mode Action buttons are contextual; they provide
     easy access to most important functionality in current mode 
@@ -78,11 +78,11 @@
   <a id= "sideMenuFeed" class="sideNaveItem"><span class="fas fa-cookie"></span>&nbsp;Feed</a>
   <a id= "sideMenuFollowed" class="sideNaveItem"><span class="fas fa-walking"></span>&nbsp;Followed Users</a>
 
-   <a id= "sideMenuAllRounds" class="sideNaveItem"><span class="fas fa-golf-ball"></span>&nbsp;All Rounds</a>
-  <a id= "sideMenuNewRound" class="sideNaveItem"><span class="fas fa-file"></span>&nbsp;Log New Round</a>
+   <a id= "sideMenuAllRounds"  style="visibility: hidden" class="sideNaveItem" ><span class="fas fa-golf-ball"></span>&nbsp;All Rounds</a>
+  <a id= "sideMenuNewRound" style="visibility: hidden" class="sideNaveItem"><span class="fas fa-file"></span>&nbsp;Log New Round</a>
  
-  <a id= "sideMenuAllCourses" class="sideNaveItem" ><span class="fas fa-atom"></span>&nbsp;All Courses</a>
-  <a id= "sideMenuAddCourse" class="sideNaveItem"><span class="fas fa-plus-square"></span>&nbsp;Add a Course</a>
+  <a id= "sideMenuAllCourses" style="visibility: hidden" class="sideNaveItem" ><span class="fas fa-atom"></span>&nbsp;All Courses</a>
+  <a id= "sideMenuAddCourse" style="visibility: hidden" class="sideNaveItem"><span class="fas fa-plus-square"></span>&nbsp;Add a Course</a>
    <!-- END GROUP OF MODE/ACTION BUTTONS -->
 </div>
 <!-- END MAIN MENU CONTENT -->
@@ -199,6 +199,7 @@ small">Courses</span></a>
       });
       document.getElementById(mode+"Div").style.display = "block";
       modeToSideContent[mode].forEach(element => {
+        document.getElementById(element).style = "visibility : visible";
         document.getElementById(element).style.display = "block";
       });
     }
